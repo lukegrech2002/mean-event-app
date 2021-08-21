@@ -69,12 +69,6 @@ export class EventCreateComponent implements OnInit {
         form.value.weather
       )
     }
-    this.eventsService.addEvent(
-      form.value.name, 
-      form.value.date, 
-      form.value.location, 
-      form.value.weather
-    );
     form.resetForm();
   }
 }
