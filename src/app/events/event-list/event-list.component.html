@@ -1,0 +1,34 @@
+<div class="spinner"></div>
+<div class="global-container">
+  <div class="card" *ngIf="events.length > 0">
+    <h2>Events</h2>
+    <div class="card-body" *ngFor="let event of events">
+      <p> Event Name: {{ event.name }} </p>
+      <p> Date: {{ event.date }} </p>
+      <p> Location: {{ event.location }} </p>
+      <p> Expected Weather: {{ event.weather }} </p>
+      <a class="btn btn-primary" [routerLink]="['./edit', './event.id']">EDIT</a>
+
+      <button class="btn btn-danger" (click)="triggerModal(modalData)">DELETE</button>
+
+      <ng-template #modalData let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Delete Event</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Are you sure you want to delete this event?</strong></p>      
+          <p>All data related to this event will be removed permanently.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Close</button>
+          <button type="button" class="btn btn-danger" (click)="onDelete(event.id)">Delete</button>
+        </div>
+      </ng-template>
+      <hr>
+    </div>
+  </div>  
+</div>
+<p id="noEventsYet" *ngIf="events.length <= 0">No events added yet!</p>

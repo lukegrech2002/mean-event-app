@@ -1,0 +1,42 @@
+<div class="spinner"></div>
+<div class="global-container">
+  <div class="card">
+    <div class="card-body">
+      <h2>Event Form</h2>
+      <form (submit)="onSaveEvent(eventForm)" #eventForm="ngForm">
+        <input
+          type="text"
+          name="name"
+          class="form-control"
+          [ngModel] = "event?.name"
+          required
+          placeholder="Event Name"
+          #name="ngModel">
+        <input
+          type="date"
+          name="date"
+          class="form-control"
+          [ngModel] = "event?.date"
+          required
+          #date="ngModel">
+        <input
+          type="text"
+          name="location"
+          class="form-control"
+          [ngModel] = "event?.location"
+          required
+          placeholder="Event Location"
+          #location="ngModel">
+        <textarea
+          name="weather"
+          [ngModel] = "event?.weather"
+          class="form-control"
+          required
+          placeholder="Weather Forecast"
+          #weather="ngModel"></textarea>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Save Event</button>
+      </form>
+    </div>
+  </div>
+</div>
+
